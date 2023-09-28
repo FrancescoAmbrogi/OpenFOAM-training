@@ -16,20 +16,21 @@ FoamFile
 
 defaultFieldValues
 (
-    volVectorFieldValue U (0 0 0)
-    volScalarFieldValue T 348.432
-    volScalarFieldValue p 100000
+    volVectorFieldValue U (1 0 0)
+    volScalarFieldValue T 0.0
 );
 
 regions
 (
-    boxToCell
+    cylinderToCell
     {
-        box (0 -1 -1) (5 1 1);
+        p1 (5 5 0); 
+        p2 (5 5 1);
+        radius 1.0;
+
         fieldValues
         (
-            volScalarFieldValue T 278.746
-            volScalarFieldValue p 10000
+            volScalarFieldValue T 1.0
         );
     }
 );
