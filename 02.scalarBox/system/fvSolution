@@ -10,41 +10,25 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
+    location    "system";
     object      fvSolution;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 solvers
 {
-    p
+    T
     {
-        solver          PCG;
-        preconditioner  DIC;
+        solver          PBiCG;
+        preconditioner  DILU;
         tolerance       1e-06;
-        relTol          0.05;
-    }
-
-    pFinal
-    {
-        $p;
-        relTol          0;
-    }
-
-    U
-    {
-        solver          smoothSolver;
-        smoother        symGaussSeidel;
-        tolerance       1e-05;
         relTol          0;
     }
 }
 
-PISO
+SIMPLE
 {
-    nCorrectors     2;
     nNonOrthogonalCorrectors 0;
-    pRefCell        0;
-    pRefValue       0;
 }
 
 
